@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<!--<PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>-->
+			<PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n"/>
+		</Console>
+	</Appenders>
+
+		<!--
+			##log4j level##
+			logging 레벨은 TRACE < DEBUG < INFO < WARN < ERROR and FATAL 이다.
+			1) FATAL : 가장 크리티컬한 에러가 났을 때 사용.
+			2) ERROR : 일반 에러가 났을 경우 사용.
+			3) WARN : 에러는 아니지만 주의할 필요있을 때 사용.
+			4) INFO : 일반 정보를 나타날 때 사용.
+			5) DEBUG : 일반 정보를 상세히 나타낼 때 사용.
+			6) TRACE : 가장 레벨이 낮은 단계, 보통 DEBUG로 많이 하며 TRACE는 뭐였더라..
+
+			debug 레벨로 했다면 INFO~FATAL까지 모두 logging 처리.
+			*운영모드라면 INFO 레벨, 개발레벨에서는 DEBUG
+			-->
+	<Loggers>
+		<!--기본 값 : debug-->
+		<Root level="info" additivity="false">
+			<AppenderRef ref="console"/>
+		</Root>
+
+		<logger name="org.springframework" level="warn" additivity="false" >
+			<appender-ref ref="console" />
+		</logger>
+
+		<logger name="org.apache.catalina" level="warn" additivity="false" >
+			<appender-ref ref="console" />
+		</logger>
+
+		<logger name="org.apache.http" level="warn" additivity="false" >
+			<appender-ref ref="console" />
+		</logger>
+	</Loggers>
+</Configuration>

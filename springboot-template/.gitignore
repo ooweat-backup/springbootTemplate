@@ -24,6 +24,8 @@ hs_err_pid*
 
 # IntelliJ project files
 .idea
+.idea/**
+.idea/**/*.xml
 .idea/*.xml
 *.iml
 out
